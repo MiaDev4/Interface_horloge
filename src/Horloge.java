@@ -33,17 +33,11 @@ public class Horloge extends JFrame {
     public void run(){
         while (true){
             try {
-                Thread.sleep(200000);
+                Thread.sleep(1000);
             }catch (InterruptedException e){
                 for (HourDisplay hd:this.dis)
                     hd.oneSecondMore();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Horloge h = new Horloge();
-
-        System.out.println(h.getHour()+":"+h.getMinute()+":"+h.getSeconde());
     }
 }

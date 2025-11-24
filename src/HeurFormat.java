@@ -2,22 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class HeurFormat extends Horloge  {
-    JTextField texte;JPanel aiguille;
 
     public HeurFormat(String titre){
+        Timer timer = new Timer(1000,e->repaint());
+        timer.start();
         this.setTitle(titre);
-        this.setSize(220,70);
-        Container contenu = this.getContentPane();
-        contenu.setBackground(Color.white);
-        texte = new JTextField(getHour()+":"+getMinute()+":"+getSeconde(), 15);
-        contenu.add(texte, BorderLayout.NORTH);
+        this.setSize(500,600);
+
     }
     public void paint(Graphics g) {
         int b = 10;
+
         g.setColor(new Color(187, 210, 225));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-
         g.setColor(Color.BLACK);
+        g.drawString(getHour()+":"+getMinute()+":"+getSeconde(),20,40);
+
         ((Graphics2D) g).setStroke(new BasicStroke(4.0f));
         g.drawOval(b, b, this.getWidth() - 2 * b, this.getHeight() - 2 * b);
 
@@ -61,10 +61,5 @@ public class HeurFormat extends Horloge  {
         );
     }
 
-    public static void main(String[] args) {
-        HeurFormat hf =new HeurFormat("Mon horloge");
-        hf.setVisible(true);
-
-    }
 
 }
